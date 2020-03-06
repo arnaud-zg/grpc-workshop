@@ -19,6 +19,7 @@ for f in ./src/proto/*; do
   ${GRPC_TOOLS_NODE_PROTOC} \
       --js_out=import_style=commonjs,binary:"${f}" \
       --grpc_out="${f}" \
+      --grpc-web_out=import_style=typescript,mode=grpcwebtext:"${f}"  \
       --plugin=protoc-gen-grpc="${GRPC_TOOLS_NODE_PROTOC_PLUGIN}" \
       -I "${f}" \
       "${f}"/*.proto
