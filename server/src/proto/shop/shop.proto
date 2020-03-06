@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package greeter;
+
+// The shop service definition.
+service Shop {
+  rpc SayHello (HelloRequest) returns (HelloResponse);
+  rpc AddProduct (AddProductRequest) returns (AddProductResponse);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloResponse {
+  string message = 1;
+}
+
+message AddProductRequest {}
+
+// The response message contaning the added product
+message PriceResponse {
+  string value = 1;
+  string currency = 2;
+}
+
+enum EnumSize {
+  S = 0;
+  M = 1;
+  L = 2;
+  XL = 3;
+}
+
+message ProductResponse {
+  string kind = 1;
+  string offerId = 2;
+  string title = 3;
+  string description = 4;
+  string link = 5;
+  string imageLink = 6;
+  string contentLanguage = 7;
+  string targetCountry = 8;
+  string channel = 9;
+  string ageGroup = 10;
+  string availability = 11;
+  string availabilityDate = 12;
+  string brand = 13;
+  string color = 14;
+  string condition = 15;
+  string gender = 16;
+  string gtin = 18;
+  string itemGroupId = 19;
+  string mpn = 20;
+  PriceResponse price = 21;
+  repeated EnumSize size = 22;
+}
+
+message AddProductResponse {
+  repeated ProductResponse addedProducts = 1;
+}
