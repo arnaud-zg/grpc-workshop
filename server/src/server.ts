@@ -6,7 +6,7 @@ import shopHandler from "./handlers/shop";
 
 protoIndex();
 
-const port: string | number = process.env.PORT || 50051;
+const port: string | number = process.env.PORT || 9090;
 
 type StartServerType = () => void;
 export const startServer: StartServerType = (): void => {

@@ -6,9 +6,13 @@
   "author": "Arnaud Zheng <arnaud-zg@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "./scripts/protoc.sh",
-    "build": "npx tsc --skipLibCheck && cp src/proto/shop/ShopServiceClientPb.ts src/proto/shop/shop_pb.d.ts src/proto/shop/shop_pb.js ../client/src/proto",
-    "start": " node ./dist/server.js"
+    "compile:server": "./scripts/protoc.sh",
+    "build:server": "npx tsc --skipLibCheck && cp src/proto/shop/ShopServiceClientPb.ts src/proto/shop/shop_pb.d.ts src/proto/shop/shop_pb.js ../client/src/proto",
+    "start:server": " node ./dist/server.js",
+    "build:proxy": "docker build -t envoy:v1 -f ./envoy.Dockerfile .",
+    "start:proxy": "docker run -d --name envoy -p 8080:8080 -p 9901:9901 envoy:v1",
+    "stop:proxy": "docker stop envoy && docker rm envoy",
+    "start:easyProxy": "grpcwebproxy --allow_all_origins --backend_addr=localhost:9090 --run_tls_server=false --server_bind_address \"0.0.0.0\"  --server_http_debug_port 8080 --use_websockets"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
