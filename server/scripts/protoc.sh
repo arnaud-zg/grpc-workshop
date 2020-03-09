@@ -30,4 +30,10 @@ for f in ./src/proto/*; do
       -I "${f}" \
       "${f}"/*.proto
 
+
+    for jsFile in "${f}"/*.js
+    do
+        echo '/* eslint-disable */' | cat - "${jsFile}" > temp && mv temp "${jsFile}"
+    done
+
 done

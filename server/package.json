@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "compile": "./scripts/protoc.sh",
-    "build": "npx tsc --skipLibCheck",
-    "start": "npx tsc --skipLibCheck && node ./dist/server.js"
+    "build": "npx tsc --skipLibCheck && cp src/proto/shop/ShopServiceClientPb.ts src/proto/shop/shop_pb.d.ts src/proto/shop/shop_pb.js ../client/src/proto",
+    "start": " node ./dist/server.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

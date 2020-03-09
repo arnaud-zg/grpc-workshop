@@ -2,7 +2,7 @@ import "dotenv/config";
 import * as grpc from "grpc";
 
 import { protoIndex } from "./proto";
-import greeterHandler from "./handlers/shop";
+import shopHandler from "./handlers/shop";
 
 protoIndex();
 
@@ -14,7 +14,7 @@ export const startServer: StartServerType = (): void => {
   const server: grpc.Server = new grpc.Server();
 
   // register all the handler here...
-  server.addService(greeterHandler.service, greeterHandler.handler);
+  server.addService(shopHandler.service, shopHandler.handler);
 
   // define the host/port for server
   server.bindAsync(

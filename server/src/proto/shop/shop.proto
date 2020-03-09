@@ -6,6 +6,7 @@ package greeter;
 service Shop {
   rpc SayHello (HelloRequest) returns (HelloResponse);
   rpc AddProduct (AddProductRequest) returns (AddProductResponse);
+  rpc ListProduct (ListProductRequest) returns (ListProductResponse);
 }
 
 // The request message containing the user's name.
@@ -18,7 +19,24 @@ message HelloResponse {
   string message = 1;
 }
 
-message AddProductRequest {}
+message AddProductRequest {
+  string kind = 1;
+  string title = 3;
+  string description = 4;
+  string link = 5;
+  string imageLink = 6;
+  string contentLanguage = 7;
+  string targetCountry = 8;
+  string channel = 9;
+  string brand = 13;
+  string color = 14;
+  string condition = 15;
+  string gender = 16;
+  string gtin = 18;
+  string mpn = 20;
+  PriceResponse price = 21;
+  repeated EnumSize size = 22;
+}
 
 // The response message contaning the added product
 message PriceResponse {
@@ -59,4 +77,11 @@ message ProductResponse {
 
 message AddProductResponse {
   repeated ProductResponse addedProducts = 1;
+}
+
+message ListProductRequest {
+}
+
+message ListProductResponse {
+  repeated ProductResponse listProduct = 1;
 }

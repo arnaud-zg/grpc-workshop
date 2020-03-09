@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @fileoverview
  * @enhanceable
@@ -16,6 +17,8 @@ goog.exportSymbol('proto.greeter.AddProductResponse', null, global);
 goog.exportSymbol('proto.greeter.EnumSize', null, global);
 goog.exportSymbol('proto.greeter.HelloRequest', null, global);
 goog.exportSymbol('proto.greeter.HelloResponse', null, global);
+goog.exportSymbol('proto.greeter.ListProductRequest', null, global);
+goog.exportSymbol('proto.greeter.ListProductResponse', null, global);
 goog.exportSymbol('proto.greeter.PriceResponse', null, global);
 goog.exportSymbol('proto.greeter.ProductResponse', null, global);
 
@@ -314,12 +317,19 @@ proto.greeter.HelloResponse.prototype.setMessage = function(value) {
  * @constructor
  */
 proto.greeter.AddProductRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.greeter.AddProductRequest.repeatedFields_, null);
 };
 goog.inherits(proto.greeter.AddProductRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.greeter.AddProductRequest.displayName = 'proto.greeter.AddProductRequest';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.greeter.AddProductRequest.repeatedFields_ = [22];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -349,7 +359,22 @@ proto.greeter.AddProductRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.greeter.AddProductRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    kind: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    title: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    link: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    imagelink: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    contentlanguage: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    targetcountry: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    channel: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    brand: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    color: jspb.Message.getFieldWithDefault(msg, 14, ""),
+    condition: jspb.Message.getFieldWithDefault(msg, 15, ""),
+    gender: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    gtin: jspb.Message.getFieldWithDefault(msg, 18, ""),
+    mpn: jspb.Message.getFieldWithDefault(msg, 20, ""),
+    price: (f = msg.getPrice()) && proto.greeter.PriceResponse.toObject(includeInstance, f),
+    sizeList: jspb.Message.getRepeatedField(msg, 22)
   };
 
   if (includeInstance) {
@@ -386,6 +411,71 @@ proto.greeter.AddProductRequest.deserializeBinaryFromReader = function(msg, read
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKind(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLink(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setImagelink(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setContentlanguage(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTargetcountry(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setChannel(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setBrand(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setColor(value);
+      break;
+    case 15:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCondition(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGender(value);
+      break;
+    case 18:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGtin(value);
+      break;
+    case 20:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMpn(value);
+      break;
+    case 21:
+      var value = new proto.greeter.PriceResponse;
+      reader.readMessage(value,proto.greeter.PriceResponse.deserializeBinaryFromReader);
+      msg.setPrice(value);
+      break;
+    case 22:
+      var value = /** @type {!Array<!proto.greeter.EnumSize>} */ (reader.readPackedEnum());
+      msg.setSizeList(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -415,6 +505,388 @@ proto.greeter.AddProductRequest.prototype.serializeBinary = function() {
  */
 proto.greeter.AddProductRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getKind();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getTitle();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getLink();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getImagelink();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getContentlanguage();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getTargetcountry();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getChannel();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getBrand();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
+    );
+  }
+  f = message.getColor();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
+      f
+    );
+  }
+  f = message.getCondition();
+  if (f.length > 0) {
+    writer.writeString(
+      15,
+      f
+    );
+  }
+  f = message.getGender();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
+      f
+    );
+  }
+  f = message.getGtin();
+  if (f.length > 0) {
+    writer.writeString(
+      18,
+      f
+    );
+  }
+  f = message.getMpn();
+  if (f.length > 0) {
+    writer.writeString(
+      20,
+      f
+    );
+  }
+  f = message.getPrice();
+  if (f != null) {
+    writer.writeMessage(
+      21,
+      f,
+      proto.greeter.PriceResponse.serializeBinaryToWriter
+    );
+  }
+  f = message.getSizeList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      22,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string kind = 1;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getKind = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setKind = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string title = 3;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getTitle = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setTitle = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string description = 4;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setDescription = function(value) {
+  jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string link = 5;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getLink = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setLink = function(value) {
+  jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string imageLink = 6;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getImagelink = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setImagelink = function(value) {
+  jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string contentLanguage = 7;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getContentlanguage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setContentlanguage = function(value) {
+  jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string targetCountry = 8;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getTargetcountry = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setTargetcountry = function(value) {
+  jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string channel = 9;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getChannel = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setChannel = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string brand = 13;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getBrand = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setBrand = function(value) {
+  jspb.Message.setProto3StringField(this, 13, value);
+};
+
+
+/**
+ * optional string color = 14;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getColor = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setColor = function(value) {
+  jspb.Message.setProto3StringField(this, 14, value);
+};
+
+
+/**
+ * optional string condition = 15;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getCondition = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 15, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setCondition = function(value) {
+  jspb.Message.setProto3StringField(this, 15, value);
+};
+
+
+/**
+ * optional string gender = 16;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getGender = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setGender = function(value) {
+  jspb.Message.setProto3StringField(this, 16, value);
+};
+
+
+/**
+ * optional string gtin = 18;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getGtin = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 18, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setGtin = function(value) {
+  jspb.Message.setProto3StringField(this, 18, value);
+};
+
+
+/**
+ * optional string mpn = 20;
+ * @return {string}
+ */
+proto.greeter.AddProductRequest.prototype.getMpn = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 20, ""));
+};
+
+
+/** @param {string} value */
+proto.greeter.AddProductRequest.prototype.setMpn = function(value) {
+  jspb.Message.setProto3StringField(this, 20, value);
+};
+
+
+/**
+ * optional PriceResponse price = 21;
+ * @return {?proto.greeter.PriceResponse}
+ */
+proto.greeter.AddProductRequest.prototype.getPrice = function() {
+  return /** @type{?proto.greeter.PriceResponse} */ (
+    jspb.Message.getWrapperField(this, proto.greeter.PriceResponse, 21));
+};
+
+
+/** @param {?proto.greeter.PriceResponse|undefined} value */
+proto.greeter.AddProductRequest.prototype.setPrice = function(value) {
+  jspb.Message.setWrapperField(this, 21, value);
+};
+
+
+proto.greeter.AddProductRequest.prototype.clearPrice = function() {
+  this.setPrice(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.greeter.AddProductRequest.prototype.hasPrice = function() {
+  return jspb.Message.getField(this, 21) != null;
+};
+
+
+/**
+ * repeated EnumSize size = 22;
+ * @return {!Array<!proto.greeter.EnumSize>}
+ */
+proto.greeter.AddProductRequest.prototype.getSizeList = function() {
+  return /** @type {!Array<!proto.greeter.EnumSize>} */ (jspb.Message.getRepeatedField(this, 22));
+};
+
+
+/** @param {!Array<!proto.greeter.EnumSize>} value */
+proto.greeter.AddProductRequest.prototype.setSizeList = function(value) {
+  jspb.Message.setField(this, 22, value || []);
+};
+
+
+/**
+ * @param {!proto.greeter.EnumSize} value
+ * @param {number=} opt_index
+ */
+proto.greeter.AddProductRequest.prototype.addSize = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 22, value, opt_index);
+};
+
+
+proto.greeter.AddProductRequest.prototype.clearSizeList = function() {
+  this.setSizeList([]);
 };
 
 
@@ -1472,6 +1944,290 @@ proto.greeter.AddProductResponse.prototype.addAddedproducts = function(opt_value
 
 proto.greeter.AddProductResponse.prototype.clearAddedproductsList = function() {
   this.setAddedproductsList([]);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.greeter.ListProductRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.greeter.ListProductRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.greeter.ListProductRequest.displayName = 'proto.greeter.ListProductRequest';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.greeter.ListProductRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.greeter.ListProductRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.greeter.ListProductRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.greeter.ListProductRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.greeter.ListProductRequest}
+ */
+proto.greeter.ListProductRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.greeter.ListProductRequest;
+  return proto.greeter.ListProductRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.greeter.ListProductRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.greeter.ListProductRequest}
+ */
+proto.greeter.ListProductRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.greeter.ListProductRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.greeter.ListProductRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.greeter.ListProductRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.greeter.ListProductRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.greeter.ListProductResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.greeter.ListProductResponse.repeatedFields_, null);
+};
+goog.inherits(proto.greeter.ListProductResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.greeter.ListProductResponse.displayName = 'proto.greeter.ListProductResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.greeter.ListProductResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.greeter.ListProductResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.greeter.ListProductResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.greeter.ListProductResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.greeter.ListProductResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    listproductList: jspb.Message.toObjectList(msg.getListproductList(),
+    proto.greeter.ProductResponse.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.greeter.ListProductResponse}
+ */
+proto.greeter.ListProductResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.greeter.ListProductResponse;
+  return proto.greeter.ListProductResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.greeter.ListProductResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.greeter.ListProductResponse}
+ */
+proto.greeter.ListProductResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.greeter.ProductResponse;
+      reader.readMessage(value,proto.greeter.ProductResponse.deserializeBinaryFromReader);
+      msg.addListproduct(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.greeter.ListProductResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.greeter.ListProductResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.greeter.ListProductResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.greeter.ListProductResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getListproductList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.greeter.ProductResponse.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated ProductResponse listProduct = 1;
+ * @return {!Array<!proto.greeter.ProductResponse>}
+ */
+proto.greeter.ListProductResponse.prototype.getListproductList = function() {
+  return /** @type{!Array<!proto.greeter.ProductResponse>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.greeter.ProductResponse, 1));
+};
+
+
+/** @param {!Array<!proto.greeter.ProductResponse>} value */
+proto.greeter.ListProductResponse.prototype.setListproductList = function(value) {
+  jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.greeter.ProductResponse=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.greeter.ProductResponse}
+ */
+proto.greeter.ListProductResponse.prototype.addListproduct = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.greeter.ProductResponse, opt_index);
+};
+
+
+proto.greeter.ListProductResponse.prototype.clearListproductList = function() {
+  this.setListproductList([]);
 };
 
 

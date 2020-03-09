@@ -13,7 +13,9 @@ import {
   AddProductRequest,
   AddProductResponse,
   HelloRequest,
-  HelloResponse} from './shop_pb';
+  HelloResponse,
+  ListProductRequest,
+  ListProductResponse} from './shop_pb';
 
 export class ShopClient {
   client_: grpcWeb.AbstractClientBase;
@@ -74,6 +76,28 @@ export class ShopClient {
       request,
       metadata || {},
       this.methodInfoAddProduct,
+      callback);
+  }
+
+  methodInfoListProduct = new grpcWeb.AbstractClientBase.MethodInfo(
+    ListProductResponse,
+    (request: ListProductRequest) => {
+      return request.serializeBinary();
+    },
+    ListProductResponse.deserializeBinary
+  );
+
+  listProduct(
+    request: ListProductRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.Error,
+               response: ListProductResponse) => void) {
+    return this.client_.rpcCall(
+      this.hostname_ +
+        '/greeter.Shop/ListProduct',
+      request,
+      metadata || {},
+      this.methodInfoListProduct,
       callback);
   }
 

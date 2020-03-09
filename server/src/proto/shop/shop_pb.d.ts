@@ -49,6 +49,59 @@ export namespace HelloResponse {
 }
 
 export class AddProductRequest extends jspb.Message { 
+    getKind(): string;
+    setKind(value: string): void;
+
+    getTitle(): string;
+    setTitle(value: string): void;
+
+    getDescription(): string;
+    setDescription(value: string): void;
+
+    getLink(): string;
+    setLink(value: string): void;
+
+    getImagelink(): string;
+    setImagelink(value: string): void;
+
+    getContentlanguage(): string;
+    setContentlanguage(value: string): void;
+
+    getTargetcountry(): string;
+    setTargetcountry(value: string): void;
+
+    getChannel(): string;
+    setChannel(value: string): void;
+
+    getBrand(): string;
+    setBrand(value: string): void;
+
+    getColor(): string;
+    setColor(value: string): void;
+
+    getCondition(): string;
+    setCondition(value: string): void;
+
+    getGender(): string;
+    setGender(value: string): void;
+
+    getGtin(): string;
+    setGtin(value: string): void;
+
+    getMpn(): string;
+    setMpn(value: string): void;
+
+
+    hasPrice(): boolean;
+    clearPrice(): void;
+    getPrice(): PriceResponse | undefined;
+    setPrice(value?: PriceResponse): void;
+
+    clearSizeList(): void;
+    getSizeList(): Array<EnumSize>;
+    setSizeList(value: Array<EnumSize>): void;
+    addSize(value: EnumSize, index?: number): EnumSize;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): AddProductRequest.AsObject;
@@ -62,6 +115,22 @@ export class AddProductRequest extends jspb.Message {
 
 export namespace AddProductRequest {
     export type AsObject = {
+        kind: string,
+        title: string,
+        description: string,
+        link: string,
+        imagelink: string,
+        contentlanguage: string,
+        targetcountry: string,
+        channel: string,
+        brand: string,
+        color: string,
+        condition: string,
+        gender: string,
+        gtin: string,
+        mpn: string,
+        price?: PriceResponse.AsObject,
+        sizeList: Array<EnumSize>,
     }
 }
 
@@ -216,6 +285,46 @@ export class AddProductResponse extends jspb.Message {
 export namespace AddProductResponse {
     export type AsObject = {
         addedproductsList: Array<ProductResponse.AsObject>,
+    }
+}
+
+export class ListProductRequest extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListProductRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListProductRequest): ListProductRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListProductRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListProductRequest;
+    static deserializeBinaryFromReader(message: ListProductRequest, reader: jspb.BinaryReader): ListProductRequest;
+}
+
+export namespace ListProductRequest {
+    export type AsObject = {
+    }
+}
+
+export class ListProductResponse extends jspb.Message { 
+    clearListproductList(): void;
+    getListproductList(): Array<ProductResponse>;
+    setListproductList(value: Array<ProductResponse>): void;
+    addListproduct(value?: ProductResponse, index?: number): ProductResponse;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListProductResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListProductResponse): ListProductResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListProductResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListProductResponse;
+    static deserializeBinaryFromReader(message: ListProductResponse, reader: jspb.BinaryReader): ListProductResponse;
+}
+
+export namespace ListProductResponse {
+    export type AsObject = {
+        listproductList: Array<ProductResponse.AsObject>,
     }
 }
 
