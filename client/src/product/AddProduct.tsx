@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 interface FormValues {
   title: string;
   price: number;
+  currency: string;
 }
 
 interface AddProductProps {
@@ -14,13 +15,14 @@ export const AddProduct = ({ onSubmit }: AddProductProps) => {
   const formik = useFormik<FormValues>({
     initialValues: {
       title: "",
-      price: 0
+      price: 0,
+      currency: ""
     },
     onSubmit: values => {
       onSubmit(values);
     }
   });
-  const { title, price } = formik.values;
+  const { title, price, currency } = formik.values;
 
   return (
     <form
@@ -47,6 +49,17 @@ export const AddProduct = ({ onSubmit }: AddProductProps) => {
           value={price}
         />
       </div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <label htmlFor="currency">currency</label>
+        <input
+          id="currency"
+          name="currency"
+          type="text"
+          onChange={formik.handleChange}
+          value={currency}
+        />
+      </div>
+
       <button type="submit">Submit</button>
     </form>
   );

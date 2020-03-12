@@ -87,6 +87,7 @@ const App = () => {
                   </div>
                   <div>
                     <span>Price: {product.price?.value}</span>
+                    <span>Currency: {product.price?.currency}</span>
                   </div>
                 </li>
               ))}
@@ -99,6 +100,7 @@ const App = () => {
               const addProductRequest = new AddProductRequest();
               const priceResponse = new PriceResponse();
               priceResponse.setValue(`${values.price}`);
+              priceResponse.setCurrency(`${values.currency}`);
               addProductRequest.setTitle(values.title);
               addProductRequest.setPrice(priceResponse);
               shopClient.addProduct(

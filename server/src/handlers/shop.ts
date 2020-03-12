@@ -32,6 +32,9 @@ const adaptProduct = ({
   productResponse.setAvailabilitydate(availabilitydate);
 
   if (price) {
+    if (price.currency) {
+      priceResponse.setCurrency(price.currency);
+    }
     if (price.value) {
       priceResponse.setValue(price.value);
     }
@@ -77,7 +80,8 @@ class ShopHandler implements IShopServer {
         availabilitydate: new Date().toISOString(),
         title: call.request.getTitle(),
         price: {
-          value: price ? price[0] : ""
+          value: price ? price[0] : "",
+          currency: price ? price[1] : ""
         }
       })
       .then(({ ops }) => {
