@@ -41,7 +41,6 @@ message AddProductRequest {
 // The response message contaning the added product
 message PriceResponse {
   string value = 1;
-  string currency = 2;
 }
 
 enum EnumSize {

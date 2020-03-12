@@ -937,8 +937,7 @@ proto.greeter.PriceResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.greeter.PriceResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    value: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    currency: jspb.Message.getFieldWithDefault(msg, 2, "")
+    value: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -979,10 +978,6 @@ proto.greeter.PriceResponse.deserializeBinaryFromReader = function(msg, reader) 
       var value = /** @type {string} */ (reader.readString());
       msg.setValue(value);
       break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setCurrency(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -1019,13 +1014,6 @@ proto.greeter.PriceResponse.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
-  f = message.getCurrency();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
 };
 
 
@@ -1041,21 +1029,6 @@ proto.greeter.PriceResponse.prototype.getValue = function() {
 /** @param {string} value */
 proto.greeter.PriceResponse.prototype.setValue = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string currency = 2;
- * @return {string}
- */
-proto.greeter.PriceResponse.prototype.getCurrency = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/** @param {string} value */
-proto.greeter.PriceResponse.prototype.setCurrency = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

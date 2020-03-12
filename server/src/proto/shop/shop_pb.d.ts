@@ -138,9 +138,6 @@ export class PriceResponse extends jspb.Message {
     getValue(): string;
     setValue(value: string): void;
 
-    getCurrency(): string;
-    setCurrency(value: string): void;
-
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): PriceResponse.AsObject;
@@ -155,7 +152,6 @@ export class PriceResponse extends jspb.Message {
 export namespace PriceResponse {
     export type AsObject = {
         value: string,
-        currency: string,
     }
 }
 

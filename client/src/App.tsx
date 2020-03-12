@@ -86,10 +86,7 @@ const App = () => {
                     <span>{product.title}</span>
                   </div>
                   <div>
-                    <span>
-                      Price: {product.price?.value}
-                      {product.price?.currency}
-                    </span>
+                    <span>Price: {product.price?.value}</span>
                   </div>
                 </li>
               ))}
