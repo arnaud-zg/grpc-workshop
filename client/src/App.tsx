@@ -6,9 +6,11 @@ import {
   HelloResponse,
   ListProductRequest,
   ListProductResponse,
-  ProductResponse
+  ProductResponse,
+  AddProductRequest,
+  PriceResponse
 } from "./proto/shop_pb";
-// import * as grpcWeb from "grpc-web";
+import { AddProduct } from "./product/AddProduct";
 
 const sayHello = (shopClient: ShopClient) =>
   new Promise<HelloResponse.AsObject>((resolve, reject) => {
@@ -44,51 +46,81 @@ const App = () => {
   >([]);
   const shopClient = new ShopClient("http://localhost:8080", null, null);
 
+  const refreshProductList = () => {
+    getProductList(shopClient).then(({ listproductList }) => {
+      setProductList(listproductList);
+    });
+  };
+
   useEffect(() => {
     sayHello(shopClient).then(({ message }) => {
       setWelcomeMessage(message);
     });
 
-    getProductList(shopClient).then(({ listproductList }) => {
-      setProductList(listproductList);
-    });
+    refreshProductList();
   }, []);
+
+  console.log({ productList });
 
   return (
     <div className="App">
       <header className="App-header">
         <p>gRPC workshop</p>
         {welcomeMessage && <p>{welcomeMessage}</p>}
-        {!!productList.length && (
-          <ul>
-            {productList.map((product, index) => (
-              <li key={`${index}-${product.mpn}`}>
-                <span>{product.kind}</span>
-                <span>{product.link}</span>
-                <span>{product.mpn}</span>
-                <span>{product.offerid}</span>
-                <span>{product.price?.value}</span>
-                <span>{product.price?.currency}</span>
-                <span>{product.sizeList}</span>
-                <span>{product.targetcountry}</span>
-                <span>{product.title}</span>
-                <span>{product.agegroup}</span>
-                <span>{product.availability}</span>
-                <span>{product.availabilitydate}</span>
-                <span>{product.brand}</span>
-                <span>{product.channel}</span>
-                <span>{product.color}</span>
-                <span>{product.condition}</span>
-                <span>{product.contentlanguage}</span>
-                <span>{product.description}</span>
-                <span>{product.gender}</span>
-                <span>{product.gtin}</span>
-                <span>{product.imagelink}</span>
-                <span>{product.itemgroupid}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div style={{ padding: 10, marginTop: 20, border: "solid" }}>
+          {!!productList.length && (
+            <ul
+              style={{
+                listStyleType: "none",
+                margin: 0,
+                padding: 0
+              }}
+            >
+              {productList.map((product, index) => (
+                <li
+                  key={`${index}-${product.mpn}`}
+                  style={{ marginTop: index > 0 ? 20 : 0 }}
+                >
+                  <div>
+                    <span>#{index} - </span>
+                    <span>{product.title}</span>
+                  </div>
+                  <div>
+                    <span>
+                      Price: {product.price?.value}
+                      {product.price?.currency}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div>
+          <AddProduct
+            onSubmit={values => {
+              const addProductRequest = new AddProductRequest();
+              const priceResponse = new PriceResponse();
+              priceResponse.setValue(`${values.price}`);
+              addProductRequest.setTitle(values.title);
+              addProductRequest.setPrice(priceResponse);
+              shopClient.addProduct(
+                addProductRequest,
+                null,
+                (err, response) => {
+                  if (err) {
+                    return;
+                  }
+                  const { addedproductsList } = response.toObject();
+                  if (addedproductsList.length) {
+                    setProductList([...productList, ...addedproductsList]);
+                  }
+                }
+              );
+            }}
+          />
+        </div>
+
         <a
           className="App-link"
           href="https://github.com/arnaud-zg/grpc-workshop"
